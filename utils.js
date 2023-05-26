@@ -1,12 +1,35 @@
 function orderedArray(arr) {
   let temp;
-  for (i = 0; i < arr.length - 1; i++) {
-    for (j = 0; j < arr.length - 1 - i; j++) {
+  for (i = 0; i <= arr.length - 1; i++) {
+    for (j = 0; j <= arr.length - 1 - i; j++) {
       if (arr[j] > arr[j + 1]) {
         temp = arr[j];
         arr[j] = arr[j + 1];
         arr[j + 1] = temp;
       }
+    }
+  }
+  return arr;
+}
+
+function selectionSort(arr) {
+  let min;
+  let pointer;
+  let flag = false;
+  // iterate to all array
+  for (i = 0; i < arr.length - 1; i++) {
+    min = arr[i];
+    // compare now temp with all data in array
+    for (j = i + 1; j < arr.length; j++) {
+      if (arr[j] < min) {
+        min = arr[j];
+        pointer = j;
+        flag = true;
+      }
+    }
+    if (flag) {
+      arr[pointer] = arr[i];
+      arr[i] = min;
     }
   }
   return arr;
@@ -57,4 +80,4 @@ function sum0(arr) {
   }
   return result;
 }
-module.exports = { orderedArray, reversedOrdered, sum0 };
+module.exports = { orderedArray, reversedOrdered, sum0, selectionSort };
